@@ -20,6 +20,6 @@
     </header>
 
     <a href="/user-pages/logout.php" class="log-out">Log out</a>
-
+    <p>Test Line Only</p>
 </body>
 </html>
