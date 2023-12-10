@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color:  white;
+    padding: 0;
+    margin: 0;
+}
+
+.message {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 15px 10px;
+    background-color: var(--white);
+    text-align: center;
+    z-index: 500;
+    box-shadow: var(--box-shadow);
+}
+
+.container-main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.g-recaptcha {
+    display: flex;
+
+}
+
+.form-box {
+    display: flex;
+    height: 450px;
+    position: relative;
+    width: 600px;
+    margin-top: 200px;
+    margin-bottom: 50px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(246, 246, 246);
+    overflow: hidden;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    transition: 0.5s ease;
+}
+
+.login-container {
+    position: relative;
+    left: 4px;
+    width: 590px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s ease-in-out;
+}
+
+.password-toggle {
+    position: absolute;
+    padding-right: 10px;
+    right: 50%;
+    right: 30px; /* Adjusted right spacing */
+    cursor: pointer;
+} 
+
+.passwordReg-toggle {
+    position: absolute;
+    padding-right: 10px;
+    right: 50%;
+    right: 30px; /* Adjusted right spacing */
+    cursor: pointer;
+} 
+
+
+.register-container {
+    position: absolute;
+    right: -600px;
+    width: 590px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s ease-in-out;
+}
+
+.clickable span {
+    color: black;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.clickable span a {
+    font-weight: 500;
+    color: black;
+    text-decoration: underline;
+}
+
+.clickable span a:hover {
+    color: rgb(40, 74, 194);
+}
+
+.clickable header {
+    color: black;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px 0 30px 0;   
+    font-family: f Finish;
+    letter-spacing: 2px;
+    color: rgb(40, 74, 194);
+}
+
+@font-face {
+    font-family: f Finish;
+    src: url("/user-pages/fonts/fFinish.ttf");
+}
+
+.two-forms {
+    display: flex;
+    gap: 35px;
+}
+
+.two-input {
+    display: flex;
+    gap: 25px; 
+    margin-bottom: 25px;
+}
+
+
+
+.input-field {
+    font-size: 15px;
+    height: 50px;
+    width: 100%;
+    padding: 0 10px 0 45px;
+    background: rgba(167, 167, 167, 0.589);
+    color: black;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    transition: 0.3 ease ;
+}
+
+.input-field:hover, .input-field:focus {
+    background: rgba(58, 58, 58, 0.373);
+}
+
+::-webkit-input-placeholder {
+    color: black;
+}
+
+.input-box i {
+    position: relative;
+    top: -37px;
+    left: 17px;
+}
+
+.submit {
+    font-size: 22px;
+    width: 100%;
+    height: 45px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 7px;
+    background-color: rgb(248, 235, 100);
+    transition: 0.4s ease;
+}
+
+.forget {
+    position: relative;
+    text-decoration: underline;
+    display: flex;
+}
+
+.check-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit:hover {
+    color: white;
+    background-color: rgb(40, 74, 194);
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+.termsLink {
+    text-decoration: underline;
+    color:  rgb(40, 74, 194);
+}
+
+.termsLink:hover {
+    color: rgb(232, 219, 78);
+}
+
+.terms-description {
+    font-size: 13px;
+}
+
+/* responsive */
+
+@media only screen and (max-width: 640px) {
+    .container-main {
+        min-height: 100vh;
+    }
+
+    .password-toggle {
+        padding-right: 30px;
+        position: absolute;
+    }
+    
+    .passwordReg-toggle {
+        padding-right: 30px;
+        position: absolute;
+    }
+
+    .form-box {
+        width: 100%;
+        height: auto;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .register-container, .login-container {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .register-container .two-forms {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .register-container .two-input {
+        flex-direction: column;
+    }
+
+    .register-container .two-input2 {
+        flex-direction: column;
+    }
+
+}
+
+@media only screen and (max-width: 560px) {
+    .login-container span, .register-container span {
+        font-size: 15px;
+        padding: 0;
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .check-box  {
+        height: 13px;
+        font-size: 13px;
+    }
+
+    .g-recaptcha {
+        transform: scale(0.9);
+        transform: translateX(-23px) translateY(10px);
+    }
+
+
+}
+

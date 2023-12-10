@@ -1,0 +1,274 @@
+.backround-Blur {
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(40, 73, 194, 0.205);
+    position: fixed;
+    z-index: 5;
+    display: none;
+    /* visibility: hidden; */
+}
+
+.variaty-Container { 
+    z-index: 7;
+    position: fixed;
+    width: 600px;
+    height: 400px;
+    display: none;
+    flex-direction: column;
+    top: 200px;
+    border-radius: 17px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    /* visibility: hidden; */
+}
+
+.exit {
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 4px 6px;
+    font-size: 20px;
+    border-radius: 3px;
+    border: none;
+    background-color: rgb(222, 222, 222);
+    color: rgb(40, 74, 194);
+}
+
+.varity1 {
+    display: flex;
+}
+
+.product-variety {
+    display: none;
+}
+
+.productName{
+    margin: 40px 0 0 20px;
+    font-weight: 600;
+    font-size: 18px;
+    width: 100%;
+}
+.productSubName {
+    font-weight: 500;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    border-bottom: 2px dashed rgb(155, 155, 155);
+}
+
+.productImg .variety1 {
+    height: 100px;
+    margin: 20px;
+    position: relative;
+}
+
+.product-variety {
+    height: 100px;
+    margin: 20px;
+    position: relative;
+}
+
+.product-name-container {
+    width: 100%;
+}
+
+.varietyName {
+    display: flex;
+    margin-left: 20px;
+}
+
+
+/* buttons for variety of products */
+.btn-variety-container {
+    height: 500px;
+}
+
+.varieties {
+    padding: 20px 0 80px 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.varietyBtn {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    background-color: rgb(40, 74, 194);
+    color: white;
+    font-size: 13px;
+    border-radius: 3px;
+}
+/* main container for proceed */
+.proceed {
+    border-radius: 0 0 17px 17px; 
+    font-size: 16px;
+    font-weight: 500;
+    border: none; 
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: black;
+    cursor: pointer;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.16);
+}
+
+.quantity {
+    display: flex;  
+    align-items: center;
+    gap: 20px;
+}
+
+.numQuantity {
+    font-size: 15px;
+    position: relative;
+}
+
+.quantityBtn {
+    padding: 4px  8px;
+    border: none;
+    background-color: rgb(87, 87, 87);
+    color: white;
+    border-radius: 3px;
+}
+
+.itemPrice {
+    display: flex;
+    align-items: end;
+    justify-content: flex-end;
+    margin-right: 15px;
+    width: 60%;
+
+}
+
+.btnProceed {
+
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: 0.4s ease;
+}
+
+.buyNow {
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none; 
+    padding: 9px 33px;
+    background-color: rgb(231, 231, 231);
+    color: black;
+    transition: 0.4s ease;
+    cursor: pointer;
+}  
+
+.buyNow:hover {
+    background-color: rgb(40, 74, 194);
+    color: white;
+}
+
+.buy-now {
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none; 
+    padding: 9px 33px;
+    background-color: rgb(231, 231, 231);
+    color: black;
+    transition: 0.4s ease;
+    cursor: pointer;
+}  
+
+.buy-now:hover {
+    background-color: rgb(40, 74, 194);
+    color: white;
+}
+
+.addToCart {
+    border-radius: 5px;
+    font-size: 21px;
+    border: none; 
+    padding: 5px 23px;
+    background-color: rgb(231, 231, 231);
+    color: black;
+    transition: 0.4s ease;
+    cursor: pointer;
+ }
+
+ .addToCart:hover {
+    background-color: rgb(40, 74, 194);
+    color: white;
+}
+
+.addTo-Cart {
+    border-radius: 5px;
+    font-size: 21px;
+    border: none; 
+    padding: 5px 23px;
+    background-color: rgb(231, 231, 231);
+    color: black;
+    transition: 0.4s ease;
+    cursor: pointer;
+ }
+
+ .addTo-Cart:hover {
+    background-color: rgb(40, 74, 194);
+    color: white;
+}
+
+@media screen and (max-width: 610px) {
+    .variaty-Container {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .variaty-Container {
+        transform: scale(0.9);
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .variaty-Container {
+        transform: scale(0.8);
+    }
+}
+
+@media screen and (max-width: 415px) {
+    .variaty-Container {
+        transform: scale(0.7);
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .variaty-Container {
+        transform: scale(0.57);
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .variaty-Container {
+        transform: scale(0.5);
+    }
+}
+
+@media screen and (max-width: 382px) {
+    .addTo-Cart {
+        font-size: 13px;
+        padding: 7px 17px;
+    }
+
+    .buy-now {
+        font-size: 15px;
+        padding: 7px 15px;
+    }
+
+    .product-price {
+        margin-left: -90px;
+    }
+}
