@@ -1,11 +1,3 @@
-<?php
-
-    session_start();
-
-    // check if user is logged in as regular user
-    if (isset($_SESSION['login']) && $_SESSION['login'] === true && isset($_SESSION['userType']) && $_SESSION['userType'] === 'user') {
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,10 +139,3 @@
   </body>
   </html>
 
-    <?php }
-    else {
-        // user is not logged in as admin, redirect to login page
-        header("Location: login.php");
-        exit();
-    }
-?>

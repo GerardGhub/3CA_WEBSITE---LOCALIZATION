@@ -1,11 +1,3 @@
-<?php
-
-    session_start();
-
-    // check if user is logged in as regular user
-    if (isset($_SESSION['login']) && $_SESSION['login'] === true && isset($_SESSION['userType']) && $_SESSION['userType'] === 'user') {
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,10 +12,10 @@
     <link rel="stylesheet" href="css-bundle/swiper-bundle.min.css">
     <!-- footer css -->
     <link rel="stylesheet" href="footer.css">
-    <!-- ceiling top css -->
+    <!-- flooring top css -->
     <link rel="stylesheet" href="categories.css">
-    <!-- cart css -->
-    <link rel="stylesheet" href="cart.css">
+    <!-- flooring css -->
+    <link rel="stylesheet" href="flooring.css">
 </head>
 <body>
     
@@ -48,7 +40,7 @@
                     <a href="" class="nav-link">ABOUT</a>
                 </li>
                 <li class="nav-item">
-                    <a href="cart.html" class="nav-link">CART</a>
+                    <a href="cart.php" class="nav-link">CART</a>
                 </li>
                 <li class="nav-item">
                     <a href="login.php" class="nav-link">ACCOUNT</a>
@@ -70,53 +62,65 @@
                 <a href="..." class="nav-link">ABOUT</a>
             </li>
             <li class="nav-item">
-                <a href="cart.html" class="nav-link">CART</a>
+                <a href="cart.php" class="nav-link">CART</a>
             </li>
             <li class="nav-item">
                 <a href="login.php" class="nav-link">ACCOUNT</a>
             </li>  
         </uv>
     </nav>
+    <!--main.js-->
+    <script src="index.js"></script>
 
-    <!-- ------------------ ----------------------------- Cart content--------------------------------- --------------------- -->
+    <!-- ---------------------------------- celing content  -------------------------------------- -->
 
-    <div class="noItemContainer">
-        <div class="noItem">
-            <p class="emptyCart">The cart is empty!</p>
-            <a href="index.html" class="toShop">Continue to shop</a>
-        </div>
+    <div class="page-info">
+      <a href="index.html" class="backHome">Home</a>
+      <p class="separate"> | </p>
+      <a href="flooring.html" class="current-page">Floorings</a>
     </div>
 
-    
+    <div class="page-title">
+      <h1 class="categoryName">FLOORINGS</h1>
+      <p class="phrase">Brows flooring needs of your choice here!</p>
+    </div>
+
+    <!-- ------------------------------------------- flooring shop content ------------------------------------------------------  -->
+
+    <div class="ceiling-container">
+      
+    </div>
+
+    <!--Footer-->
 
     <footer class="footer">
-        <div class="footer-container">
-          <div class="row">
-            <div class="footer-col">
-              <h4>Customers Service</h4>
-              <ul>
-                <li><a href="footer_content/terms.html">Terms and Condition</a></li>
-                <li><a href="footer_content/privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="footer_content/payment.html">Payment</a></li>
-                <li><a href="footer_content/return-refund.html">Return and Refunds</a></li>
-              </ul>
-            </div>
-  
-            <div class="footer-col">
-              <h4>Get Help</h4>
-              <ul>
-                <li><a href="footer_content/FAQ.html">FAQ</a></li>
-                <li><a href="footer_content/contactUs.html">Contact Us</a></li>
-              </ul>
-            </div>
-  
-            <div class="footer-col">
-              <h4>Company</h4>
-              <ul>
-                <li><a href="footer_content/aboutUs.html">About Us</a></li>
-                <li><a href="footer_content/storeLocation.html">Store Location</a></li>
-              </ul>
-            </div>
+      <div class="footer-container">
+        <div class="row">
+          <div class="footer-col">
+            <h4>Customers Service</h4>
+            <ul>
+              <li><a href="footer_content/terms.html">Terms and Condition</a></li>
+              <li><a href="footer_content/privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="footer_content/payment.html">Payment</a></li>
+              <li><a href="footer_content/return-refund.html">Return and Refunds</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Get Help</h4>
+            <ul>
+              <li><a href="footer_content/FAQ.html">FAQ</a></li>
+              <li><a href="footer_content/contactUs.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="footer_content/aboutUs.html">About Us</a></li>
+              <li><a href="footer_content/storeLocation.html">Store Location</a></li>
+            </ul>
+          </div>
   
             <div class="footer-col">
               <h4>Follow Us</h4>
@@ -140,17 +144,5 @@
       <div class="reserved">
         <p>© 2023 3CA CONSTRUCTION SERVICES. ALL RIGHTS RESERVED</p>
       </div>
-  
-          <!--main.js-->
-          <script src="index.js"></script>
-          <script src="cart.js"></script>
-  </body>
-  </html>
-
-    <?php }
-    else {
-        // user is not logged in as admin, redirect to login page
-        header("Location: login.php");
-        exit();
-    }
-?>
+</body>
+</html>
