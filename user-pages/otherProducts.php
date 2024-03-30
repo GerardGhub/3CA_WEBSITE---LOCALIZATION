@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+
+// check if user is logged in as regular user
+if (isset($_SESSION['login']) && $_SESSION['login'] === true && isset($_SESSION['userType']) && $_SESSION['userType'] === 'user') {
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +31,7 @@
         <nav class="navigation">
             <!--logo and logo name-->
             <div class="logo">
-            <a href="index.html" class="back-logo">
+            <a href="index.php" class="back-logo">
                 <div class="img-logo">
                     <img src="main_logo.png" width="50" height="50" id="mainlogo"> 
                 </div>
@@ -34,7 +42,7 @@
             <!--nav items-->
             <uv class="nav-menu">   
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link">HOME</a>
+                    <a href="index.php" class="nav-link">HOME</a>
                 </li>
                 <li class="nav-item">
                     <a href="" class="nav-link">ABOUT</a>
@@ -56,7 +64,7 @@
     <nav class="mobile-nav">
         <uv class="mobile-nav-menu">   
             <li class="nav-item">
-                <a href="index.html" class="nav-link">HOME</a>
+                <a href="index.php" class="nav-link">HOME</a>
             </li>
             <li class="nav-item">
                 <a href="..." class="nav-link">ABOUT</a>
@@ -77,9 +85,9 @@
     <!-- ---------------------------------- others top  -------------------------------------- -->
 
     <div class="page-info">
-      <a href="index.html" class="backHome">Home</a>
+      <a href="index.php" class="backHome">Home</a>
       <p class="separate"> | </p>
-      <a href="ceiling.html" class="current-page">Other Products</a>
+      <a href="ceiling.php" class="current-page">Other Products</a>
     </div>
 
     <div class="page-title">
@@ -488,3 +496,11 @@
     <script src="ceilingVariety.js"></script>
 </body>
 </html>
+
+<?php }
+    else {
+        // user is not logged in as admin, redirect to login page
+        header("Location: login.php");
+        exit();
+    }
+?>

@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color:  white;
+    background-color: #e8e8e8;
     padding: 0;
     margin: 0;
 }
@@ -26,28 +26,152 @@ body {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
 }
 
-.logo {
+.header {
     display: flex;
     justify-content: space-between;
     gap: 30px;
     margin-left: 20px;
 }
 
-.logo .logo-img {
+.adminName {
     display: flex;
-    position: relative;
-    height: 60px;
-    width: 60px;
+    position: absolute;
+    align-items: center;
+    font-size: 30px;
+    right: 20px;
+    top: 20px;
 }
 
-.logo .adminName {
+
+
+.side-nav {
     display: flex;
+    position: fixed;
+    z-index: 4;
+    background-color: rgb(242, 242, 242);
+    height: 100vh;
+    width: 6%;
+    flex-direction: column;
+    transition: all 0.4s ease;
+}
+
+.side-nav-isActive {
+    width: 18%;
+}
+
+.sideNavTop {
+    display: flex;
+    height: 85px;
+    width: 100%;
+    background-color: rgb(255, 241, 82);
+    align-items: center;
+}
+
+.logoImg {
+    display: flex;
+    height: 60px;
+    width: 60px;
+    margin: 15px;
+}
+
+.sideNavMenu {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.sideNavButton {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 25px 20px;
+    transition: all 0.4s ease;
     position: relative;
-    font-size: 40px;
+}
+
+.imgIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 27px;
 }
 
 a {
-    margin-top: 100px;
+    text-decoration: none;
+    color: black;
+}
+
+.nav-icons {
+    display: flex;
+    height: 45px;
+    width: 45px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(196, 196, 196);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-icons:hover {
+    transform: scale(1.2);
+}
+
+.nav-icons i {
+    display: flex;
+    font-size: 20px;
+}
+
+.sideNavLink {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 85px;
+    left: -110px;
+    z-index: 3;
+    height: 88vh;
+    width: 13%; 
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.sideNavLink-isActive {
+    left: 92px;
+}
+
+.navLink {  
+    cursor: pointer;
+}
+
+.navLink:hover {
+    background-color:  rgb(222, 222, 222);
+}
+
+.Link {
+    display: flex   ;
+    padding: 36px 20px; 
+    text-decoration: none;
+    color: black;
+}
+
+.toggleNav {
+    padding: 20px 6px;
+    background-color: rgb(40, 74, 194);
     display: flex;
     position: absolute;
+    font-size: 30px;
+    border-radius: 0 10px 10px 0;
+    left: 100%;
+    top: 0;   
+    transition: all 0.4s ease;
 }
+
+.toggleNav:hover {
+    padding-left: 15px;
+}
+
+
+
+

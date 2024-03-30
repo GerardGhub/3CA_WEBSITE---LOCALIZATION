@@ -7,7 +7,7 @@ class DatabaseHelper {
         $this->dbHost = 'localhost';
         $this->dbUser = 'root';
         $this->dbPassword = '';
-        $this->dbName = '';
+        $this->dbName = 'user_db'; //place your database here
 
         $dbConString = new mysqli($this->dbHost, $this->dbUser, $this->dbPassword, $this->dbName);
         return $dbConString;
