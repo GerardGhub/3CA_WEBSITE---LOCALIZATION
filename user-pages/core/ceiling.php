@@ -51,6 +51,7 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <title>3CA Contruction Service</title>
         <!-- font awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -95,6 +96,94 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
             .product-card {
                 border: 2px dotted black;
             }
+
+            /* CSS for mobile responsiveness */
+            .product-option {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .quantity-controls {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .indexqty {
+                flex: 1;
+                /* Ensures the input field takes up remaining space */
+                margin: 0 10px;
+                /* Adjust spacing between buttons and input */
+            }
+
+            .total-price {
+                margin-top: 10px;
+                /* Add some space between quantity controls and total price */
+            }
+
+
+            .footer {
+                padding: 50px 0;
+            }
+
+            .footer-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .row {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center; /* Center content horizontally */
+            }
+
+            .footer-col {
+                flex: 1;
+                margin-right: 20px;
+                margin-bottom: 20px;
+            }
+
+            .footer-col h4 {
+                color: #333;
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            .footer-col ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .footer-col ul li {
+                margin-bottom: 10px;
+            }
+
+            .social-links a {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                background-color: #333;
+                color: #fff;
+                text-align: center;
+                line-height: 40px;
+                border-radius: 50%;
+            }
+
+            /* Media queries for responsiveness */
+            @media (max-width: 768px) {
+                .footer-col {
+                    flex: 1 1 50%;
+                    /* Two columns on smaller screens */
+                }
+            }
+
+            @media (max-width: 576px) {
+                .footer-col {
+                    flex: 1 1 100%;
+                    /* One column on extra-small screens */
+                }
+            }
         </style>
 
     </head>
@@ -105,7 +194,7 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
             <nav class="navigation">
                 <!--logo and logo name-->
                 <div class="logo">
-                    <a href="index.php" class="back-logo">
+                    <a href="../../index.php" class="back-logo">
                         <div class="img-logo">
                             <img src="../assets/images/main_logo.png" width="50" height="50" id="mainlogo">
                         </div>
@@ -337,17 +426,18 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
                                         </div>
 
                                         <div class="product-option">
-
                                             <!-- Inside the product card -->
-                                            <div class="product-option">
+                                            <div class="quantity-controls">
                                                 <button class="quantity-btn" onclick="decreaseQuantity('<?php echo $quantityId; ?>','<?php echo $totalPriceId; ?>')">-</button>
-                                                <input style="text-align: center;" type="number" id="<?php echo $quantityId; ?>" value="1" min="1" oninput="updateTotalPrice('<?php echo $quantityId; ?>', '<?php echo $totalPriceId; ?>')" disabled>
+                                                <input style="text-align: center;" type="number" class="indexqty" id="<?php echo $quantityId; ?>" value="1" min="1" oninput="updateTotalPrice('<?php echo $quantityId; ?>', '<?php echo $totalPriceId; ?>')" disabled>
                                                 <button class="quantity-btn" onclick="increaseQuantity('<?php echo $quantityId; ?>','<?php echo $totalPriceId; ?>')">+</button>
-                                                <p>Total Price: ₱<span id="<?php echo $totalPriceId; ?>"><?php echo number_format($row['unit_cost'], 2); ?></span></p>
                                             </div>
-
-
+                                            <div class="total-price">
+                                                <p id="<?php echo $totalPriceId; ?>">Total Price: ₱<?php echo number_format($row['unit_cost'], 2); ?></p>
+                                            </div>
                                         </div>
+
+
                                         <?php
                                         if (isset($_SESSION["userEmpID"])) {
                                         ?>
@@ -444,11 +534,10 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
                             <li><a href="../footer_content/hours.php">MONDAY TO SUNDAY</a></li>
                         </ul>
                     </div>
-
                 </div>
             </div>
-            </div>
         </footer>
+
 
         <div class="reserved">
             <p>© 2023 3CA CONSTRUCTION SERVICES. ALL RIGHTS RESERVED</p>
@@ -458,8 +547,9 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
         <script src="../assets/js/ceiling.js"></script>
         <script src="../assets/js/jquery.min.js"></script>
         <script>
-            function selectProduct(productNameFetch, varietyFetch, productUnitCost, productQty) {
+            var globalUnitCost = 0;
 
+            function selectProduct(productNameFetch, varietyFetch, productUnitCost, productQty) {
 
                 var selectedProductQty = document.getElementById(productQty).value;
 
@@ -493,29 +583,43 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
 
 
             function increaseQuantity(quantityId, totalPriceId) {
+
                 let quantityInput = document.getElementById(quantityId);
+                let indexqty = document.getElementsByClassName("indexqty")[quantityId];
+                let indexqtyvalue = indexqty.value;
+
                 let currentQuantity = parseInt(quantityInput.value);
                 quantityInput.value = currentQuantity + 1;
-                updateTotalPrice(quantityId, totalPriceId);
+                indexqtyvalue = parseInt(indexqtyvalue) + 1;
+                updateTotalPrice(quantityId, totalPriceId, indexqtyvalue);
             }
 
             function decreaseQuantity(quantityId, totalPriceId) {
                 let quantityInput = document.getElementById(quantityId);
+                let indexqty = document.getElementsByClassName("indexqty")[quantityId];
+                let indexqtyvalue = indexqty.value;
                 let currentQuantity = parseInt(quantityInput.value);
                 if (currentQuantity > 1) {
                     quantityInput.value = currentQuantity - 1;
-                    updateTotalPrice(quantityId, totalPriceId);
+                    indexqtyvalue = parseInt(indexqtyvalue) - 1;
+                    updateTotalPrice(quantityId, totalPriceId, indexqtyvalue);
                 }
             }
 
-            function updateTotalPrice(quantityId, totalPriceId) {
+            function updateTotalPrice(quantityId, totalPriceId, indexQty) {
 
 
-                let unitPrice = parseFloat(document.getElementById('unitPrice').textContent);
+                let indexucost = document.getElementById("unitPrice").textContent;
+                // let unitPrice = parseFloat(document.getElementById('unitPrice').textContent);
 
+                let stringValue = indexucost;
+                let floatValue = parseFloat(stringValue.replace(/,/g, ''));
+
+                let unitPrice = floatValue;
                 let quantity = parseInt(document.getElementById(quantityId).value);
                 let totalPriceElement = document.getElementById(totalPriceId);;
-                let totalPrice = unitPrice * quantity;
+                let totalPrice = unitPrice * indexQty;
+
 
                 totalPriceElement.textContent = totalPrice.toFixed(2);
 
