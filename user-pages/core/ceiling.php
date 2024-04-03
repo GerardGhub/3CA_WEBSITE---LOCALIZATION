@@ -412,7 +412,7 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
 
                                         <div class="productInfo">
                                             <div class="product-price">
-                                                <p id="unitPrice">₱ </p><?php echo number_format($row['unit_cost'], 2); ?>
+                                                <p id="unitPrice">₱  </p><?php echo number_format($row['unit_cost'], 2); ?>
                                             </div>
                                             <div class="product-option">
 
