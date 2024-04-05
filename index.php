@@ -118,9 +118,9 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
 
         <div class="mobileBtn">
           <!-- logout Icon -->
-          <button class="logoutIcon" id="logoutIcon">
+          <!-- <button class="logoutIcon" id="logoutIcon">
             <i class="fa-solid fa-user-large"></i>
-          </button>
+          </button> -->
 
 
 
@@ -136,15 +136,79 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
 
     <nav class="mobile-nav">
       <uv class="mobile-nav-menu">
+  
         <li class="nav-item">
-          <a href="index.php" class="nav-link">HOME</a>
-        </li>
-        <li class="nav-item">
-          <a href="user-pages/core/orders.php" class="nav-link">ORDERS</a>
-        </li>
-        <li class="nav-item">
-          <a href="user-pages/core/cart.php" class="nav-link">CART</a>
-        </li>
+            <a href="index.php" class="nav-link">HOME</a>
+          </li>
+
+
+          <?php
+          if (isset($_SESSION["userEmpID"])) {
+          ?>
+
+            <li class="nav-item">
+              <a href="user-pages/core/orders.php" class="nav-link">ORDERS</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="user-pages/core/cart.php" class="nav-link">CART 
+                <span class="badge badge-light" style="color: black; background-color: orange;">
+                  <?php echo  $_SESSION["current_cart_count"] ?>
+                </span></a>
+
+            </li>
+
+            <li class="nav-item">
+              <a href="user-pages/core/message.php" class="nav-link">MESSAGE <b class="badge badge-light" style="color: black; background-color:orange;">
+                  <?php echo  $_SESSION["message_count"] ?>
+          </b></a>
+
+            </li>
+
+
+            <li class="nav-item">
+              <!-- <a class="nav-link">ACCOUNT</a> -->
+              <div class="space-x-1">
+                <div class="dropdown d-inline-block" style="margin: 10px 10px;">
+
+                  <button style="background-color:rgb(255, 200, 82);" type="button" class="btn btn-alt-secondary" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                  <?php echo $_SESSION['firstname'] ?> <?php echo $_SESSION['lastname'] ?>
+                    <i class="fa fa-fw fa-angle-down opacity-50 ms-1 d-none d-sm-inline-block"></i>
+                  </button>
+
+                  <div class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="page-header-user-dropdown">
+                    <div class="p-2">
+                      <a class="dropdown-item" href="user-pages/core/user_profile.php">
+                        <i class="far fa-fw fa-user me-1"></i> My Profile
+                      </a>
+                      <div role="separator" class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="user-pages/core/logout.php">
+                        <i class="far fa-fw fa-arrow-alt-circle-left me-1"></i> Sign Out
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+
+
+            </li>
+
+          <?php
+          } else {
+          ?>
+            <li class="nav-item" id="account-dropdown">
+              <a href="user-pages/core/login.php" class="nav-link">LOG IN</a>
+            </li>
+          <?php
+          }
+          ?>
+        </uv>
+
+
       </uv>
     </nav>
 
@@ -250,7 +314,7 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
             $_SESSION["currentSelectProduct"] = $text;
             // Output HTML markup for the category
         ?>
-            <div class="category">
+            <div class="category" style="margin-bottom:15px;">
               <img src="user-pages/main_img/<?php echo $img; ?>" alt="" class="walling-pic" style="width:300px; height: 250px;">
               <a href="user-pages/core/<?php echo $link; ?>" class="view-walling" style="white-space: nowrap;">
                 VIEW <?php echo strtoupper($text); ?>

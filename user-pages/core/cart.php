@@ -124,34 +124,78 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
         </header>
 
         <nav class="mobile-nav">
-            <uv class="nav-menu">
+            <uv class="mobile-nav-menu">
+
                 <li class="nav-item">
                     <a href="../../index.php" class="nav-link">HOME</a>
                 </li>
-                <li class="nav-item">
-                    <a href="orders.php" class="nav-link">ORDERS</a>
-                </li>
+
+
                 <?php
                 if (isset($_SESSION["userEmpID"])) {
                 ?>
+
                     <li class="nav-item">
-                        <a href="cart.php" class="nav-link">CART</a>
+                        <a href="../core/orders.php" class="nav-link">ORDERS</a>
                     </li>
-                    <li class="nav-item" id="account-dropdown">
-                        <a class="nav-link">ACCOUNT</a>
+
+                    <li class="nav-item">
+                        <a href="../core/cart.php" class="nav-link">CART <span class="badge badge-light" style="color: black; background-color: orange;">
+                                <?php echo  $_SESSION["current_cart_count"] ?>
+                            </span></a>
+
                     </li>
-                    <li class="nav-item" id="account-dropdown">
-                        <a href="logout.php" class="nav-link">LOG OUT</a>
+
+                    <li class="nav-item">
+                        <a href="../core/message.php" class="nav-link">MESSAGE <span class="badge badge-light" style="color: black; background-color:orange;">
+                                <?php echo  $_SESSION["message_count"] ?>
+                            </span></a>
+
                     </li>
+
+
+                    <li class="nav-item">
+                        <!-- <a class="nav-link">ACCOUNT</a> -->
+                        <div class="space-x-1">
+                            <div class="dropdown d-inline-block" style="margin: 10px 10px;">
+
+                                <button style="background-color:rgb(255, 200, 82);" type="button" class="btn btn-alt-secondary" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                    <?php echo $_SESSION['firstname'] ?> <?php echo $_SESSION['lastname'] ?>
+                                    <i class="fa fa-fw fa-angle-down opacity-50 ms-1 d-none d-sm-inline-block"></i>
+                                </button>
+
+                                <div class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="page-header-user-dropdown">
+                                    <div class="p-2">
+                                        <a class="dropdown-item" href="../core/user_profile.php">
+                                            <i class="far fa-fw fa-user me-1"></i> My Profile
+                                        </a>
+                                        <div role="separator" class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="../core/logout.php">
+                                            <i class="far fa-fw fa-arrow-alt-circle-left me-1"></i> Sign Out
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+                    </li>
+
                 <?php
                 } else {
                 ?>
                     <li class="nav-item" id="account-dropdown">
-                        <a href="login.php" class="nav-link">LOG IN</a>
+                        <a href="user-pages/core/login.php" class="nav-link">LOG IN</a>
                     </li>
                 <?php
                 }
                 ?>
+
+
             </uv>
         </nav>
 
