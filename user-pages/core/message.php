@@ -34,6 +34,18 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
         <link rel="stylesheet" href="../assets/css/categories.css">
         <!-- cart css -->
         <link rel="stylesheet" href="../assets/css/cart.css">
+        <style>
+            @media (max-width: 767px) {
+                .cart-table-container {
+                    width: 100%;
+                    padding: 0 15px;
+                }
+            }
+
+
+
+
+        </style>
     </head>
 
     <body>
@@ -125,81 +137,81 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
 
         <nav class="mobile-nav">
             <uv class="mobile-nav-menu">
-            <li class="nav-item">
-            <a href="../../index.php" class="nav-link">HOME</a>
-          </li>
+                <li class="nav-item">
+                    <a href="../../index.php" class="nav-link">HOME</a>
+                </li>
 
 
-          <?php
-          if (isset($_SESSION["userEmpID"])) {
-          ?>
+                <?php
+                if (isset($_SESSION["userEmpID"])) {
+                ?>
 
-            <li class="nav-item">
-              <a href="../core/orders.php" class="nav-link">ORDERS</a>
-            </li>
+                    <li class="nav-item">
+                        <a href="../core/orders.php" class="nav-link">ORDERS</a>
+                    </li>
 
-            <li class="nav-item">
-              <a href="../core/cart.php" class="nav-link">CART <span class="badge badge-light" style="color: black; background-color: orange;">
-                  <?php echo  $_SESSION["current_cart_count"] ?>
-                </span></a>
+                    <li class="nav-item">
+                        <a href="../core/cart.php" class="nav-link">CART <span class="badge badge-light" style="color: black; background-color: orange;">
+                                <?php echo  $_SESSION["current_cart_count"] ?>
+                            </span></a>
 
-            </li>
+                    </li>
 
-            <li class="nav-item">
-              <a href="../core/message.php" class="nav-link">MESSAGE <span class="badge badge-light" style="color: black; background-color:orange;">
-                  <?php echo  $_SESSION["message_count"] ?>
-                </span></a>
+                    <li class="nav-item">
+                        <a href="../core/message.php" class="nav-link">MESSAGE <span class="badge badge-light" style="color: black; background-color:orange;">
+                                <?php echo  $_SESSION["message_count"] ?>
+                            </span></a>
 
-            </li>
-
-
-            <li class="nav-item">
-              <!-- <a class="nav-link">ACCOUNT</a> -->
-              <div class="space-x-1">
-                <div class="dropdown d-inline-block">
-
-                  <button style="background-color:rgb(255, 200, 82);" type="button" class="btn btn-alt-secondary" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="img-avatar img-avatar32 img-avatar-thumb" src="assets/media/avatars/<?php echo $gender; ?>.png" alt="">
-                    <span class="d-none d-sm-inline-block" style="font-size: 15px;"><?php echo $_SESSION['firstname'] ?> <?php echo $_SESSION['lastname'] ?></span>
-                    <i class="fa fa-fw fa-angle-down opacity-50 ms-1 d-none d-sm-inline-block"></i>
-                  </button>
-
-                  <div class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="page-header-user-dropdown">
-                    <div class="p-2">
-                      <a class="dropdown-item" href="user-pages/core/user_profile.php">
-                        <i class="far fa-fw fa-user me-1"></i> My Profile
-                      </a>
-                      <div role="separator" class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="user-pages/core/logout.php">
-                        <i class="far fa-fw fa-arrow-alt-circle-left me-1"></i> Sign Out
-                      </a>
-                    </div>
-                  </div>
-                </div>
+                    </li>
 
 
-              </div>
+                    <li class="nav-item">
+                        <!-- <a class="nav-link">ACCOUNT</a> -->
+                        <div class="space-x-1">
+                            <div class="dropdown d-inline-block">
+
+                                <button style="background-color:rgb(255, 200, 82);" type="button" class="btn btn-alt-secondary" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img class="img-avatar img-avatar32 img-avatar-thumb" src="assets/media/avatars/<?php echo $gender; ?>.png" alt="">
+                                    <span class="d-none d-sm-inline-block" style="font-size: 15px;"><?php echo $_SESSION['firstname'] ?> <?php echo $_SESSION['lastname'] ?></span>
+                                    <i class="fa fa-fw fa-angle-down opacity-50 ms-1 d-none d-sm-inline-block"></i>
+                                </button>
+
+                                <div class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="page-header-user-dropdown">
+                                    <div class="p-2">
+                                        <a class="dropdown-item" href="user-pages/core/user_profile.php">
+                                            <i class="far fa-fw fa-user me-1"></i> My Profile
+                                        </a>
+                                        <div role="separator" class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="user-pages/core/logout.php">
+                                            <i class="far fa-fw fa-arrow-alt-circle-left me-1"></i> Sign Out
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
 
 
 
-            </li>
+                    </li>
 
-          <?php
-          } else {
-          ?>
-            <li class="nav-item" id="account-dropdown">
-              <a href="user-pages/core/login.php" class="nav-link">LOG IN</a>
-            </li>
-          <?php
-          }
-          ?>
-       
+                <?php
+                } else {
+                ?>
+                    <li class="nav-item" id="account-dropdown">
+                        <a href="user-pages/core/login.php" class="nav-link">LOG IN</a>
+                    </li>
+                <?php
+                }
+                ?>
+
             </uv>
         </nav>
 
         <!-- ------------------ ----------------------------- Cart content--------------------------------- --------------------- -->
 
-        <div class="noItemContainer" style="margin-bottom:300px;">
+        <div class="noItemContainer">
 
 
             <?php
@@ -211,14 +223,14 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
             ?>
 
 
-                <div style="position: absolute; top: 15%; left: 0; width: 80%; margin-left: 10%; margin-right: 10%; ">
+                <div class="cart-table-container">
                     <?php require_once('../../admin-pages/notif/check-reply.php'); ?>
                     <table class="table-responsive">
                         <thead>
-                            <th style="border: 1px solid black; padding: 5px; text-align: center">Product Name</th>
-                            <th style="border: 1px solid black; text-align: center">Product Variety</th>
+                            <th style="border: 1px solid black;text-align: center">Item</th>
+                            <th style="border: 1px solid black; text-align: center">Variety</th>
                             <th style="border: 1px solid black; text-align: center">Unit Cost</th>
-                            <th style="border: 1px solid black; text-align: center">Quantity</th>
+                            <th style="border: 1px solid black; text-align: center">Qty</th>
                             <th style="border: 1px solid black; text-align: center">Price</th>
                             <th style="border: 1px solid black; text-align: center">Date Ordered</th>
                             <th style="border: 1px solid black; text-align: center">Message</th>
@@ -234,13 +246,13 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
                                 $sum = $sum + $fetchCart["price"];
                             ?>
                                 <tr>
-                                    <td style="border: 1px solid black; padding: 5px; text-align: center"><?= $fetchCart["productName"]; ?></td>
-                                    <td style="border: 1px solid black; padding: 5px; text-align: center"><?= $fetchCart["variety"]; ?></td>
-                                    <td style="border: 1px solid black; padding: 5px; text-align: center">&#8369; <?= number_format($fetchCart["unitcost"], 2); ?></td>
-                                    <td style="border: 1px solid black; padding: 5px; text-align: center"><?= $fetchCart["quantity"]; ?></td>
-                                    <td style="border: 1px solid black; padding: 5px; text-align: center"><?= $fetchCart["date_ordered"]; ?></td>
-                                    <td style="border: 1px solid black; padding: 5px; text-align: center">&#8369; <?= number_format($fetchCart["price"], 2); ?></td>
-                                    <td style="border: 1px solid black; padding: 5px; text-align: center"><?= $fetchCart["message"]; ?></td>
+                                    <td style="border: 1px solid black;  text-align: center"><?= $fetchCart["productName"]; ?></td>
+                                    <td style="border: 1px solid black;  text-align: center"><?= $fetchCart["variety"]; ?></td>
+                                    <td style="border: 1px solid black;  text-align: center">&#8369; <?= number_format($fetchCart["unitcost"], 2); ?></td>
+                                    <td style="border: 1px solid black;  text-align: center"><?= $fetchCart["quantity"]; ?></td>
+                                    <td style="border: 1px solid black; text-align: center"><?= $fetchCart["date_ordered"]; ?></td>
+                                    <td style="border: 1px solid black;  text-align: center">&#8369; <?= number_format($fetchCart["price"], 2); ?></td>
+                                    <td style="border: 1px solid black;  text-align: center"><?= $fetchCart["message"]; ?></td>
 
                                 </tr>
                             <?php
@@ -268,7 +280,7 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
 
         <!-- ------------------ ----------------------------- Footer content--------------------------------- --------------------- -->
 
-        <footer class="footer">
+        <footer class="footer" style="margin-top: 2400px;">
             <div class="footer-container">
                 <div class="row">
                     <div class="footer-col">
@@ -324,8 +336,8 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
         <script src="../assets/js/index.js"></script>
         <script src="../assets/js/cart.js"></script>
         <script src="../assets/js/jquery.min.js"></script>
-       
-         
+
+
     </body>
 
     </html>
