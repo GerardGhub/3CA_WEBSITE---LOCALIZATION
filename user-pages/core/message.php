@@ -278,7 +278,7 @@ if (!isset($_SESSION['userType']) || $_SESSION['userType'] !== 'user') {
             ?>
         </div>
 
-        <!-- ------------------ ----------------------------- Footer content--------------------------------- --------------------- -->
+        <!-- ------------------- ----------------------------- Footer content--------------------------------- --------------------- -->
 
         <footer class="footer" style="margin-top: 2400px;">
             <div class="footer-container">
